@@ -13,7 +13,7 @@ Architecture                         20   Dave Dolson
   https://datatracker.ietf.org/doc/html/draft-larose-capport-architecture
 ICMP                                 20   David Bird
   https://datatracker.ietf.org/doc/html/draft-wkumari-capport-icmp-unreach
-PvD                                  20   TBD
+PvD                                  20   Tommy Pauly
   https://datatracker.ietf.org/doc/html/draft-bruneau-intarea-provisioning-domains
 API                                  20   Mark Donnelly
   https://datatracker.ietf.org/doc/html/draft-donnelly-capport-detection
