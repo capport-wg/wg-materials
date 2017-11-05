@@ -1,0 +1,21 @@
+CAPPORT Working Group
+IETF 100
+Singapore
+2017-11-14
+15:50-17:50 Tuesday Afternoon session II
+Chairs: Erik Kline, Martin Thomson
+Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf100
+
+Agenda (proposed)
+Administrivia                   5   Chairs
+MVP                            20   Chairs
+  - status of API document
+  - report from Hackathon session
+
+ICMP (open discussion)         45   Kyle Larose
+  https://datatracker.ietf.org/doc/html/draft-wkumari-capport-icmp-unreach
+
+Architecture (update)          15   Dave Dolson
+  https://datatracker.ietf.org/doc/html/draft-ietf-capport-architecture
+
+
