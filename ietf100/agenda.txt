@@ -6,7 +6,7 @@ Singapore
 Chairs: Erik Kline, Martin Thomson
 Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf100
 
-Agenda (proposed)
+Agenda
 Administrivia                   5   Chairs
 MVP                            20   Chairs
   - status of API document
@@ -15,7 +15,11 @@ MVP                            20   Chairs
 ICMP (open discussion)         45   Kyle Larose
   https://datatracker.ietf.org/doc/html/draft-wkumari-capport-icmp-unreach
 
-Architecture (update)          15   Dave Dolson
+Architecture (update)          15   Kyle Larose
   https://datatracker.ietf.org/doc/html/draft-ietf-capport-architecture
+  https://github.com/capport-wg/architecture
+
+PvD (update)                   15   Tommy Pauly
+  https://datatracker.ietf.org/doc/draft-ietf-intarea-provisioning-domains
 
 
