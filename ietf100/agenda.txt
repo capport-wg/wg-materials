@@ -8,9 +8,9 @@ Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf100
 
 Agenda
 Administrivia                   5   Chairs
-MVP                            20   Chairs
+Status updates                 20   Chairs
   - status of API document
-  - report from Hackathon session
+  - links to Hackathon materials
 
 ICMP (open discussion)         45   Kyle Larose
   https://datatracker.ietf.org/doc/html/draft-wkumari-capport-icmp-unreach
