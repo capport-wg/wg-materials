@@ -1,0 +1,24 @@
+CAPPORT Working Group
+IETF 101
+London
+2018-03-23
+11:50-13:20 Friday Afternoon session I
+Chairs: Erik Kline, Martin Thomson
+Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf101
+
+Agenda
+
+Administrivia                      5   Chairs
+
+API update                        20   Tommy Pauly/Darshak Thakore
+  - status of API document
+  - github open issues
+
+RFC 7710: to bis or not to bis    20   Chairs/TBD
+  - bis vs "Updates: 7710"
+
+Architecture (update)             20   Kyle Larose
+  - changes since Singapore
+  - attributes to use for enforcement
+  - authenticated ICMP?
+  - remaining github open issues
