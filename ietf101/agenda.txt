@@ -1,8 +1,8 @@
 CAPPORT Working Group
 IETF 101
 London
-2018-03-23
-11:50-13:20 Friday Afternoon session I
+2018-03-20
+13:30-15:30 Tuesday Afternoon session I
 Chairs: Erik Kline, Martin Thomson
 Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf101
 
