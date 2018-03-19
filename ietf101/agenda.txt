@@ -22,3 +22,5 @@ Architecture (update)             20   Kyle Larose
   - attributes to use for enforcement
   - authenticated ICMP?
   - remaining github open issues
+
+Time permitting: hotspot lite           Darshak Thakore
