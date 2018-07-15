@@ -2,7 +2,7 @@ CAPPORT Working Group
 IETF 102
 Montreal
 2018-03-20
-09:30-12:00 Tuesday Morning session
+09:30-12:00 Tuesday Morning session, Notre Dame
 Chairs: Erik Kline, Martin Thomson
 Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf102
 
@@ -15,5 +15,7 @@ API update                        10   Tommy Pauly/Darshak Thakore
 
 Architecture (update)             30   Kyle Larose
   - changes since London
+
+draft-pfister-capport-pvd         10   Pierre Pfister/Tommy Pauly
 
 AOB
