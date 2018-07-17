@@ -1,0 +1,271 @@
+the note well might have been out of date
+
+7710bis
+
+we need a citation for conneg (7231 maybe)
+
+question: when the DHCP infrastructure isn't under their control, and
+there was some reluctance to even attempt changing the DHCP
+configuration; is there another option?
+
+conclusion: the API has some questions about the use of a link
+relation for the discovery of the API endpoint, we should take the
+suggestion to the list, but there was general enthusiasm for the idea
+
+Lorenzo noted that this is something that would allow you to
+distinguish a 302 from a captive portal 302.
+
+API
+
+content type - no comments on the change
+authentication - emile what should the name be, if it is not presented
+to the user
+tommy - this is just regular validation
+lorenzo - the URL is not that important, we don't need to present it
+to the user - confidentiality might be more important
+martin had a comment that the stated reasons for using TLS aren't
+quite right, this is more about removing uncertainty about the
+identity of the name
+dkg - we validate the name, and that allows the user to see the
+identity of the server, which might be important
+warren - this is often outsourced to a company with which the user has
+no expectation
+lorenzo - this is from an entirely untrusted source; can we restrict
+API and user interaction to be the same hostname?
+tommy - maybe we can present this.
+lorenzo - not likely
+tommy - we lose flexibility in deployment by restricting names
+pierre+tommy - it's good to know that your captor and the API are in cahoots
+darshak - hostname restrictions would make deployment very difficult
+martin - we aren't going to prevent phishing, because there are no
+established expectations at the start of this process
+lorenzo - why can't we make these the same thing?  API and page could
+be the same
+martin - what do you believe that you are gaining?  with redirects you
+can end up anywhere
+dkg - if we think that this will improve access, the user might not
+see the page in future connections, whatever your client does is keyed
+to something; if it is the invisible API document we use, then we lose
+something
+kyle - we're not addressing this for just wifi, as a reminder
+lorenzo - if we have a way to reconnect to the portal, then we might
+need to think more about this
+conclusion - we will take this (new) topic to the list
+
+is there a process by which we would define new keys
+warren - (bad idea)
+lorenzo - do we need a registry?  what rules?
+lorenzo - yes, we need an extension process
+
+warren - extra edgecase - incorrect API listed, either it is down or
+the information is wrong
+tommy - we fall back
+warren - after how long?
+tommy - some time, delaying the interaction
+kyle - what if the portal is a nuisance?
+tommy - we might allow the connection anyway
+lorenzo - if the API is advertised on a non-captive network, that's
+equivalent to being logged in
+tommy - yes, and also maybe useful.  the landing page might be useful
+lorenzo - this might provide operators incentive for the purposes of
+communicating to users
+warren - this might be abused - even if that is what they already do
+Eric Vyncke - yes, you can possibly show bad stuff
+erik - do we need to do this?
+lorenzo - yes
+
+(darshak takes over presentation)
+
+if the UE gets to the portal HTML page, a link relation could be used
+to get back the API
+
+warren - normal network, and then I get to a bad page with this link
+relation, what then?
+darshak - this is only active when you know you are captive
+lorenzo - the answer is the first request - the sacrificial request
+that the UE makes
+warren - you might want to restrict this to the first few seconds
+lorenzo - a sacrificial probe is necessary, and we would do it on that
+only; in our code, that is entirely separate from the code that
+ultimately displays the page
+eric kinnear - this won't work if the network is suddenly captive
+after not being captive
+lorenzo - choice (c) creates more work; I tried to argue for (b), but
+that doesn't seem to fly, so that leaves (a) "captive-api"
+martin - unless you are specifically looking for this information don't use it
+erik - do you need an API at the OS that you could feed this information to?
+tommy - creating the link relation creates the possibility of misuse
+if people miss the applicability statement
+tommy - should we suggest that the probe use the Accept header we use
+for the API?
+warren - maybe ?  that would be a clear signal that this is a probe,
+not sure if that is good or not
+darshak - we probably still need more advice about deployment guidance
+if we decide to do anything like this
+
+architecture
+
+lorenzo - a signal before closure might be used to plead for
+attention; would network operators abuse this?
+kyle - a snooze button
+tommy - expiry bytes or time in the API don't necessarily mean that
+you would prompt; maybe the OS would show a notification, which the
+user could choose to ignore; the timer could be a system-level
+counter; the signaling protocol could allow the network to continually
+change its mind; not sure about the protocol value - how long before
+closure should the notification come?
+kyle - pestering is possible already, though not to that degree; the
+signaling protocol might be more reliable and harder to mess up
+warren - portals can already do this and some do - a prompt to look at
+the API is valuable; a user will only be annoyed if the timer is low
+enough to trigger the OS to do something
+lorenzo - there might not be an incentive for the network to have a UE
+go to the API; eyeballs are value, but the API represents cost for the
+provider; it's OK for us to contact the API and update our clock; this
+should always be a hint to go to the API, nothing more; that would
+remove the bad incentives
+dkg - think about the power structures that we are putting in place
+here; no signaling protocol means that the network operator has to
+make a commitment, giving network operators more power; it would be
+better if the network operator has to stick to their commitments
+kyle - what is the cost of visiting the API
+dkg - visiting the API is a cost in itself
+pierre - this looks insecure; this can be very lightweight; and it
+doesn't need to be before closure; we don't need a URI in this message
+warren - there is some incentive to play games maybe; the information
+needs to be scoped to that network
+lorenzo - there is no real cost to the UE to pull the JSON, so it's
+probably OK (there is probably more cost on the server)
+tommy - once connected, the UE might present information about the
+negotiation, which could be used to validate the negotiated terms; an
+advance signal might be complicated in some of the deployment
+scenarios
+lorenzo - again, why before the closure
+kyle - what about when a device becomes captive
+lorenzo - a portal operator said that the only reason they give away
+free wifi is that they get to show a page to people, and they are very
+annoyed at the UE not showing that page properly
+warren - destination unreachable is a bad user experience; but having
+the UE configured with a time might be better
+erik - the system would provide the time warning, not necessarily the
+ICMP message; why not use destination unreachable always, but instead
+recommend that an OS should provide a way for applications to cause
+the OS to reevaluate the status of the network
+pierre - destination unreachable with a new type might help, but we
+couldn't mandate it; recommend that the UE doesn't have to connect
+until it believes that the negotiated term/bytes expires; maybe set a
+minimum duration
+lorenzo - I can hit the API every 5s; if that creates an incentive to
+interrupt users, that's OK; no one is going to ask us to hit the API
+unless they can use that to trigger that interruption: we can't have
+nice things; the only solution is to present confirmation after
+connection and expect that the contract is kept; we need to build this
+with an adversarial mindset
+
+darshak - logged in is not necessary a binary state - what if the
+network wants to block netflix
+lorenzo - we won't get consensus on this point
+martin - we agreed not to do this
+darshak - we should just address the issue in the text
+warren - what about plane wifi where you can get to the videos that
+are on the local server?  wording might be difficult
+lorenzo - though this might be reality, this problem is hard to get
+consensus on; we can only agree on a binary state, and any more
+graduated access we can't agree on
+tommy - we should not engage in the raging debate, but we should not
+make these networks worse as a result of our design; e.g., an ICMP
+message from netflix on that network shouldn't result in a new flow;
+the API is a bootstrap only, we're not trying to change the nature of
+the networks, which is right
+lorenzo - this can look like an outage for affected services in the
+partial connectivity cases, which is ok if that is expected; we can't
+make this situation better
+erik - we have a URL, the OS might provide a path to get to that, but that's it
+kyle - maybe this could be clearer signals to apps
+warren - free might be bad and you might want to renegotiate
+lorenzo - we can provide that sort of affordance, easily, without
+affecting this question
+pierre - nothing automatic for this case
+lorenzo - selective blocking can produce an awful user experience
+
+conclusion - signal means contact the API, no more; UE can choose to
+do that, or not
+conclusion - document what we might do networks that selectively block
+destinations; that is, nothing specific, though we believe that this
+will not make the situation worse for networks that do this, we expect
+those networks to communicate with users using the portal web page
+
+backwards compatibility section - delete it
+
+accept header field - remove that language from the architecture doc
+
+signal authenticity
+tommy - the requirements are tied to what we want from the signal; the
+signal we just discussed doesn't really need any more authenticity
+than what we already have; a stronger authentication requirement
+implies greater weight on the signal; it creates the wrong impression
+pierre - speaking in general terms, we should talk about the spoofing
+properties, for instance a very easily spoofable message might be a
+problem; maybe an API could whitelist source addresses for these
+signals
+
+lorenzo - could we get consensus on this doc if we removed all the
+signaling text?
+pierre - signaling has some value
+warren - we might want to include a note in the intro
+martin - we could reduce the detail in the document instead
+darshak - it might be good to have some detail
+
+conclusion - we will reduce the level of detail; kyle to look at this
+
+pierre - volunteers an idea - we just say that the enforcement point
+can send destination unreachable?
+tommy - silent drops are not good, we could say that, don't blackhole packets
+lorenzo - suggests that invalid TLS certs are a better idea than blackholes
+
+lorenzo - the value we provide here is in describing a protocol that
+helps clarify the contract between different devices- we can't tell
+operators how to build what they have already built
+warren - destination unreachable can be sticky, I had to reboot my
+machine to fix a problem with a destination that was marked as
+unreachable, even after I had paid for access
+
+PvD
+
+lorenzo - what if this URL changes?  we should address that in the architecture
+tommy - this is useful work; PvD is more targetted; PvD might
+supercede the other ways of discovering the API
+
+Eric V - use null for the key.
+pierre - be consistent with the proposed 7710 change (urn:ietf:params:...)
+dkg - there are now N places to get this information; we're building a
+swamp that is going to have failure modes that are completely
+impenetrable
+lorenzo - I agree, this isn't good; maybe we should only do 7710 and
+the proposed HTTP header first; we could wait until PvD is mainstream
+(tommy seems to agree)
+lorenzo - you might be able to containerize the 7710 option in here
+without creating a new path
+dkg - if I get two different URIs on the same link and those have the
+same value; what does it mean to register with that once?  two PvDs
+with the same API endpoint, which did you register with?
+pierre - the one associated with your source address
+dkg - please document this
+tommy - this needs a little more work; we need to specify this in the
+API document: once you have interacted with the portal, you need to
+check in with the API
+lorenzo - login for one wouldn't necessarily mean login for both, you
+need to use the network associated with the PvD; UX is *hard*
+erik - PvD might be useful in extended networks (e.g., tethering)
+darshak - we still need to know which wins
+lorenzo - if this is part of an implicit PvD, then it won't matter
+pierre - in that case, use an RA
+(notes capture failed at this point)
+darshak - we need a rule for who wins
+
+conclusion - keep this individual until it matures a little
+
+kyle - what about architecture, which references PvD
+tommy - mention it in the abstract and define the role, but avoid the specifics
+adam - an informational citation is fine
+kyle - we should try tommy's suggestion
