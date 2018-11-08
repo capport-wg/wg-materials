@@ -1,0 +1,76 @@
+CAPPORT minutes
+2018.11.08
+
+The official session was cancelled, but thereafter interest was expressed.
+These are some notes from the unofficial meeting held in the same timeslot.
+
+
+[ Architecture document ]
+
+Kick-off question: is it done yet?
+
+There's a difference between the enforcement device(s) and the enforcement
+controller (e.g. WiFi AP vs controller).  The architecture diagram could be
+updated to reflect this.  Nasir to comment on the list and/or send a pull
+request.
+
+Also: the diagram needs to explicitly speak in terms of "functions".
+
+Content of the signalling function (2.5) goes into considerable detail;
+perhaps over-specified?
+
+PVD section should just contain the API endpoint.
+
+The document could benefit from Harmonizing terminology. Expecting a pull
+request.
+
+Proposed edit for section 2.3: privacy, integrity, and *confidentiality*.
+Consider expanding the Arch Doc terminology section.
+
+
+[ API document ]
+
+Applicability of HTTPS and TLS validation. Definitely don't want self-signed
+certificates.
+
+Discussion of how Plex mints certs for devices.
+
+
+[ Android captive portal UX improvements ]
+
+3 things to communicate to the user:
+    - usage info
+    - session management
+    - venue-specific information
+
+Darshak: Perhaps the option to transfer one UE's logged in status to another
+device.
+
+Perhaps one clickable element in a network management to expand these 2 or 3
+options.
+
+Will continue to probe Internet connectivity despite assurances from the API.
+
+Perhaps distinguish in the API JSON keys between user-portal-url and a venue
+info URL. The venue page is often where a successful login via the
+user-portal-url leads.
+
+Auto-close of the post-interaction landing page may be nice for users, but
+then that page is hard to return to explicitly.
+
+The venue specific information should perhaps be in the PVD instead.
+
+
+[ Deployability ]
+
+Mariko and Kyle chatting about the drafts.
+
+Do we need a deployment draft?
+
+Erik, co-chair hat off: I'm concerned about the hole we have for getting UE
+identifying info from the API URL into the login page.
+
+
+[ WBA liaison ]
+
+Hoping to get access to some kinds of documentation.
