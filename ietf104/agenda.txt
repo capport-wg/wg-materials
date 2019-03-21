@@ -13,7 +13,9 @@ Administrivia                      5   Chairs
 
 Draft Status
   - Architecture (update)          5  Chairs
+    https://tools.ietf.org/html/draft-ietf-capport-architecture-03
   - API (update)                   10  Tommy&Darshak
+    https://tools.ietf.org/html/draft-ietf-capport-api-02
 
 What does "done" look like for this group?  Chairs
 
