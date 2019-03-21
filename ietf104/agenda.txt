@@ -1,0 +1,20 @@
+CAPPORT Working Group
+IETF 104
+Prague
+2019-03-27
+11:20-13:20 Second Wednesday session, Karlin 3
+Chairs: Erik Kline, Martin Thomson
+Materials: https://github.com/capport-wg/wg-materials/tree/master/ietf104
+
+Agenda
+
+Administrivia                      5   Chairs
+  - Agenda bash
+
+Draft Status
+  - Architecture (update)          5  Chairs
+  - API (update)                   10  Tommy&Darshak
+
+What does "done" look like for this group?  Chairs
+
+AOB
