@@ -12,6 +12,8 @@ Administrivia                      5   Chairs
   - Agenda bash
 
 Draft Status
+  - 7710bis (update)               5  Erik
+    https://tools.ietf.org/html/draft-ekwk-capport-rfc7710bis-02
   - Architecture (update)          5  Chairs
     https://tools.ietf.org/html/draft-ietf-capport-architecture-03
   - API (update)                   10  Tommy&Darshak
