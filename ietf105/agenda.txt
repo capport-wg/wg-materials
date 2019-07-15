@@ -7,7 +7,7 @@ status                            10+5  chairs
 WBA                               10+5  Brian Shields
 architecture issues               20
   draft-ietf-capport-architecture
-draft-ietf-capport-7710bis        ?
+draft-ietf-capport-rfc7710bis     ?
 draft-ietf-capport-api            ?
 AOB
 
